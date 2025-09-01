@@ -1,0 +1,57 @@
+<div
+  class={`
+  -top-1/2 -left-1/2 -botton-1/2 -right-1/2 
+  fixed bg-repeat bg-transparent w-[200%] h-[200vh] z-[999999] pointer-events-none contrast-125 brightness-150`}>
+</div>
+
+<style>
+  div {
+    /* background-image: url("/noisy.png"); */
+    background-image: url("/noise.png");
+    animation: noise .7s infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    div {
+      animation: none;
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes noise {
+    0% {
+      transform: translate(0, 0);
+    }
+    10% {
+      transform: translate(-5%, -5%);
+    }
+    20% {
+      transform: translate(5%, 5%);
+    }
+    30% {
+      transform: translate(-5%, 5%);
+    }
+    40% {
+      transform: translate(5%, -5%);
+    }
+    50% {
+      transform: translate(0, 0);
+    }
+    60% {
+      transform: translate(-5%, -5%);
+    }
+    70% {
+      transform: translate(5%, 5%);
+    }
+    80% {
+      transform: translate(-5%, 5%);
+    }
+    90% {
+      transform: translate(5%, -5%);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+
+  }
+</style>

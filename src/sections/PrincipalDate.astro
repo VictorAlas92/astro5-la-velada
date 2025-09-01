@@ -1,0 +1,62 @@
+<section
+  class="flex flex-col animate-fade-in-up animate-delay-500 items-center justify-center gap-y-2 mt-32 mx-auto text-center text-primary">
+  <h2 class="uppercase text-5xl font-semibold">
+    4 de marzo
+    <span aria-hidden="true" class="hidden md:inline mx-1">•</span>
+    <br aria-hidden="true" class="md:hidden" />
+    <!-- 19:00h CET -->
+    <span>
+      <script is:inline>
+        const END_DATE = 1709571600000;
+        //  para mostrar la hora segun la region hay que tomar la hora donde
+        // sucedera el evento combertirla a la zona horaria GMT-0
+        //  y ya con esa hora podemos sacar el timestamp
+        //  https://www.epochconverter.com/ ahora con este dato podemos sacar
+        // la zona horaria de cualquier region con el codigo siguiente
+
+        const d = new Date(END_DATE);
+        const date = d.toLocaleTimeString("es-mx", {
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+
+        // get current timezone
+        const tzOffset = d.getTimezoneOffset() / 60;
+        const diff = tzOffset * -1;
+        const gmt =
+          diff > 0 ? `GMT+${diff}` : `GMT-${Math.abs(diff)}`;
+
+        const TZ_DICTIONARY = {
+          "GMT+1": "CET",
+          "GMT-6": "UTC",
+        };
+        const tz = TZ_DICTIONARY[gmt] ?? gmt;
+
+        const selfScript = document.currentScript;
+        selfScript.parentNode.innerHTML = `${date} ${tz}`;
+      </script>
+    </span>
+  </h2>
+  <h3
+    class="uppercase text-2xl font-medium flex flex-col max-w-sm mt-6">
+    <span class="font-semibold">Evento de precentación</span>
+    <span class="underline font-extralight"
+      >Teatro Victoria (Barcelona)</span
+    >
+  </h3>
+
+  <div class="mt-2 font-medium">
+    <a
+      href="https://goo.su/pdpe92"
+      target="_blank"
+      class="uppercase text-lg border-2 border-primary px-4 py-1 mt-8 hover:scale-125 hover:bg-slate-300 transition inline-block"
+      >Entradas agotadas</a
+    >
+    <a
+      href=""
+      target="_blank"
+      class="uppercase text-lg border-2 border-primary px-4 py-1 mt-8 hover:scale-125 hover:bg-slate-300 transition inline-block"
+      >Agragar a calendario</a
+    >
+  </div>
+</section>

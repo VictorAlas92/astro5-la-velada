@@ -1,0 +1,76 @@
+---
+import Twitch from "@/components/Twitch.astro";
+---
+
+<section
+  class="flex flex-col my-32 text-primary font-medium gap-y-10">
+  <div class="flex flex-col items-center">
+    <a
+      href="twitch.tv"
+      target="_blank"
+      rel="nooppener noreferrer"
+      class="hover:scale-125 hover:opacity-70 transition inline-block">
+      <svg
+        class="twitch text-primary"
+        xmlns="http://www.w3.org/2000/svg"
+        width="54"
+        height="65"
+        viewBox="0 0 54 65"
+        fill="none">
+        <path
+          d="M11.3441 0.914795L0.161285 12.3434V53.4862H13.5806V64.9148L24.7634 53.4862H33.7097L53.8387 32.9148V0.914795H11.3441Z"
+          fill="currentColor"></path>
+        <path
+          d="M40.4194 39.7719L49.3656 30.6291V5.48621H13.5806V39.7719H22.5269V48.9148L31.4731 39.7719H40.4194Z"
+          fill="#fff"></path>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M31.4731 14.6292H27V28.3434H31.4731V14.6292ZM42.6559 28.3434V14.6292H38.1828V28.3434H42.6559Z"
+          fill="currentColor"></path>
+      </svg>
+    </a>
+  </div>
+  <div
+    class="grid grid-cols-[1fr] md:grid-cols-[1fr_1.5fr_1fr] justify-center uppercase text-center gap-x-10">
+    <article
+      class="order-2 md:order-1 flex justify-center items-center md:border-y-2 md:border-primary py-10 md:py-12 px-1 text-xl">
+      <h5 class="w-56">
+        Presentación, Pesaje, Entrevista y cara a cara
+      </h5>
+    </article>
+    <article
+      class="order-1 md:order-2 flex justify-center items-center border-y-2 border-primary py-10 md:py-12 px-1 text-4xl font-semibold">
+      <h4>
+        <a
+          href="twitch.tv"
+          target="_blank"
+          rel="nooppener noreferrer"
+          class="hover:text-twitch hover:scale-110 transition inline-block">
+          Síguelo en directo twitch.tv/ibai
+        </a>
+      </h4>
+    </article>
+    <article
+      class="order-3 md:order-3 flex justify-center items-center border-y-2 border-primary py-10 md:py-12 px-1 text-xl">
+      <h5 class="w-56">
+        Con la presencia de los boceadores y boxeadoras
+      </h5>
+    </article>
+  </div>
+</section>
+
+<style>
+  svg {
+    view-timeline-name: --twitch;
+    view-timeline-axis: block;
+
+    animation-timeline: --twitch;
+    animation-name: show;
+  }
+  @keyframes show {
+    to {
+      color: #6441a4;
+    }
+  }
+</style>

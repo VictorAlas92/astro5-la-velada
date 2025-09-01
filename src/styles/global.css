@@ -1,0 +1,10 @@
+@import "tailwindcss";
+/* Supports weights 100-900 */
+@import "@fontsource-variable/jost";
+@plugin "@midudev/tailwind-animations";
+
+@theme {
+  --color-primary: #333333;
+  --color-secondary: #dddddd;
+  --color-twitch: #6441a4;
+}

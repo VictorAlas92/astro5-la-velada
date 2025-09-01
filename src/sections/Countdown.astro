@@ -1,0 +1,93 @@
+---
+import LaVelada from "@/components/LaVelada.astro";
+
+const TIMESTAMP_END = 1709571600000;
+---
+
+<section class="flex flex-col items-center justify-center pb-32">
+  <LaVelada class="text-primary" />
+  <div
+    data-date={TIMESTAMP_END}
+    class="flex flex-row gap-x-1 text-primary uppercase font-semibold">
+    <div
+      class="flex flex-col justify-center items-center gap-y-2 w-16">
+      <span data-days class="text-4xl tabular-nums">00</span>
+      <span class="text-xs text-center">Dias</span>
+    </div>
+    <span aria-hidden="true" class="mt-1 text-xl">:</span>
+    <div
+      class="flex flex-col justify-center items-center gap-y-2 w-16">
+      <span data-hours class="text-4xl tabular-nums">00</span>
+      <span class="text-xs text-center">Horas</span>
+    </div>
+    <span aria-hidden="true" class="mt-1 text-xl">:</span>
+    <div
+      class="flex flex-col justify-center items-center gap-y-2 w-16">
+      <span data-minutes class="text-4xl tabular-nums">00</span>
+      <span class="text-xs text-center">Minutos</span>
+    </div>
+    <span aria-hidden="true" class="mt-1 text-xl">:</span>
+    <div
+      class="flex flex-col justify-center items-center gap-y-2 w-16">
+      <span data-seconds class="text-4xl tabular-nums">00</span>
+      <span class="text-xs text-center">Segundos</span>
+    </div>
+  </div>
+</section>
+
+<script>
+  const SECOND = 1000; // 1000 milisegundos
+  const MINUTE = SECOND * 60; // 60s --> 60000 milisegundos
+  const HOUR = MINUTE * 60; //60m --> 3600s --> 3600000 milisegundos
+  const DAY = HOUR * 24; // 24h --> 86400s --> 86400000 milisegundos
+
+  function init() {
+    const $countdown = document.querySelector("[data-date]");
+    if (!$countdown) return;
+
+    const $days = $countdown.querySelector("[data-days]");
+    const $hours = $countdown.querySelector("[data-hours]");
+    const $minutes = $countdown.querySelector("[data-minutes]");
+    const $seconds = $countdown.querySelector("[data-seconds]");
+
+    const timestamp = $countdown.getAttribute("data-date");
+    if (!timestamp) return;
+    const date = new Date(+timestamp).getTime();
+    //el signo de + combierte un strin en number
+    // console.log(date);
+
+    const formateTime = (time: number) => {
+      return Math.floor(time).toString().padStart(2, "0");
+      //Math.florr redondea hacia abajo
+    };
+
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = date - now;
+      if ($days instanceof HTMLElement) {
+        if (!(+formateTime(diff / DAY) <= 0)) {
+          $days.innerHTML = formateTime(diff / DAY);
+        }
+      }
+      if ($hours instanceof HTMLElement) {
+        if (!(+formateTime((diff % DAY) / HOUR) <= 0)) {
+          $hours.innerHTML = formateTime((diff % DAY) / HOUR);
+        }
+      }
+      if ($minutes instanceof HTMLElement) {
+        if (!(+formateTime((diff % HOUR) / MINUTE) <= 0)) {
+          $minutes.innerHTML = formateTime((diff % HOUR) / MINUTE);
+        }
+      }
+      if ($seconds instanceof HTMLElement) {
+        if (!(+formateTime((diff % MINUTE) / SECOND) <= 0)) {
+          $seconds.innerHTML = formateTime((diff % MINUTE) / SECOND);
+        }
+      }
+    }
+
+    setInterval(updateCountdown, SECOND);
+    updateCountdown();
+  }
+  init();
+</script>
